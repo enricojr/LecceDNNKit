@@ -47,7 +47,6 @@ def convertToPanda(setupClient):
                     df_full = pd.concat(df_list,ignore_index=True)
                     print ('Total Num entries after presel',df_full.shape[0])
 
-
                     X = Randomizing(df_full,False) # False means that a new column with the original event index will be generated and saved
 
                     fileInDir = re.sub('\.root$', '', fileInDir)
@@ -77,7 +76,6 @@ def convertToPanda(setupClient):
                     print ('{:<20}'.format(Fore.RED+'==> NOT Found!') )
         if found == False:
             print ('{:<20}'.format(Fore.RED+'==> NOT Found!'))
-
 
 def applyPreselection(inPanda,cuts):
     inPanda = eval(cuts)
@@ -188,7 +186,6 @@ def preparePandas(setupClient):
     print ('{:<45} {:<15}'.format('Total backgr events in Test Sample',Fore.BLUE+str(bkgPD_Test.shape[0])))
     if df_data != []:
         print ('{:<45} {:<15}'.format('Total data events  ',Fore.BLUE+str(dataPD.shape[0])))
-
 
 
     ################# Copy random signal truth mass to background truth mass ###################
