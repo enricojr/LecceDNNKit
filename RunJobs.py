@@ -1,8 +1,8 @@
 #! /usr/bin/env python
 import os
 
-doConvertToPD      = 0 # this already splits into test/train ...
-doTrainTestSamples = 1 # this one merges everything
+doConvertToPD      = 1 # this already splits into test/train ...
+doTrainTestSamples = 0 # this one merges everything
 doTraining         = 0
 doTestTrainedModel = 0
 doPlotValidation   = 0
@@ -15,10 +15,10 @@ inputPath = '/nfs/kloe/einstein4/HDBS/newDataFromRob/'
 PDPath = '/nfs/kloe/einstein4/HDBS/DNN_InputDataFrames/'
 modelpath = '/nfs/kloe/einstein4/HDBS/DNNModels/test/'
 
-bkgFiles = 'Diboson-1,stop-0,stop-1,ttbar-0,ttbar-1,ttbar-2,ttbar-3,ttbar-4,ttbar-5,Wjets-0,Wjets-1,Wjets-2,Wjets-3,Wjets-4,Wjets-5,Wjets-6,Wjets-8,Wjets-9,Zjets-0,Zjets-1,Zjets-2,Zjets-3,Zjets-4,Zjets-5,Zjets-6,Zjets-7,Zjets-8,Zjets-9,Zjets-10,Zjets-11'
+bkgFiles = 'Diboson-0'#,Diboson-1,stop-0,stop-1,ttbar-0,ttbar-1,ttbar-2,ttbar-3,ttbar-4,ttbar-5,Wjets-0,Wjets-1,Wjets-2,Wjets-3,Wjets-4,Wjets-5,Wjets-6,Wjets-8,Wjets-9,Zjets-0,Zjets-1,Zjets-2,Zjets-3,Zjets-4,Zjets-5,Zjets-6,Zjets-7,Zjets-8,Zjets-9,Zjets-10,Zjets-11'
 dataFiles = 'Data' # copied from Diboson-1: temporary hack, waiting for actual data files
-signalFiles = 'Signal'
-# EJS missing: data file, Diboson-0 (broken), Wjets-7 (missing lep1_m)
+signalFiles = 'Signal' # IMPORTANT: this one must have exactly this name. Such name is used to assign value 1 to the isSignal flag
+# EJS missing: data file, Wjets-7 (missing lep1_m)
 
 mixedFileName = 'MixPD_MergedGGFH'
 mode = 'binary'

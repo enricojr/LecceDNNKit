@@ -45,7 +45,13 @@ def convertToPanda(setupClient):
                             # chunk.to_pickle(setupClient.PDPath+i+'_FullNoRandom'+str(counter)+'.pkl')
 
                     df_full = pd.concat(df_list,ignore_index=True)
-                    print ('Total Num entries after presel',df_full.shape[0])
+                    # EJS 2021-03-22: adding isSignal column based on file name
+                    if (i == 'Signal'):
+                        df_full.insert(len(df_full.columns), "isSignal", np.ones(df_full.shape[0]), True)
+                    else:
+                        df_full.insert(len(df_full.columns), "isSignal", np.zeros(df_full.shape[0]), True)
+                    ### end EJS
+                    print ('Total Num entries after presel ',df_full.shape[0])
 
                     X = Randomizing(df_full,False) # False means that a new column with the original event index will be generated and saved
 
