@@ -15,6 +15,16 @@ from  collections  import Counter
 from HelperTools import *
 
 def convertToPanda(setupClient):
+
+    # EJS 2021-03-24: loading DSID-mass map
+    f = open('data/DSIDMap_2lep.txt')
+    lines = f.readlines()
+    DSID = [i.split(':')[0] for i in lines]
+    print (DSID)
+    mass = [int(i.split(':')[1]) for i in lines]
+    print (mass)
+    # end EJS
+
     listFiles = os.listdir(setupClient.InputMLNtuplePath) # returns list
 
     for i in setupClient.InputROOTFiles:
@@ -46,8 +56,19 @@ def convertToPanda(setupClient):
 
                     df_full = pd.concat(df_list,ignore_index=True)
                     # EJS 2021-03-22: adding isSignal column based on file name
+                    # EJS 2021-03-24: converting DSID to mass for signal
                     if (i == 'Signal'):
                         df_full.insert(len(df_full.columns), "isSignal", np.ones(df_full.shape[0]), True)
+                        print(df_full[:10])
+                        for k in range(df_full.shape[0]):
+                            found = False
+                            for j in range(len(DSID)):
+                                if (df_full.iat[k,0] == int(DSID[j])):
+                                    df_full.iat[k,0] = int(mass[j])
+                                    found = True
+                            if (found == False):
+                                print(f'{Fore.RED} WARNING !!! missing mass value for DSID ' + str(df_full.iat[k,0]))
+                        print(df_full[:10])
                     else:
                         df_full.insert(len(df_full.columns), "isSignal", np.zeros(df_full.shape[0]), True)
                     ### end EJS
