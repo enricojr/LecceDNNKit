@@ -81,6 +81,7 @@ def convertToPanda(setupClient):
                         print ('{:>20} {:<15}'.format('Data  events',Fore.GREEN+str(X.shape[0])+'\n'))
                         X.to_pickle(setupClient.PDPath+i+'.pkl')
                     else:
+                        # EJS 2021-03-25: not sure these two lines are working anymore. Most likely, the separation into specific datasets (e.g. VBF vs ggF) must be done 'manually'
                         if 'VBF' in fileInDir                      : X['ggFVBF'] = 1 # antonio
                         if 'ggF' in fileInDir or 'DY' in fileInDir : X['ggFVBF'] = 0 # antonio
 
@@ -151,7 +152,6 @@ def preparePandas(setupClient):
         print('totEvents=',totEvents, 'minEvents=',minEvents)
 
 
-
     for ifile in setupClient.InputFilesSB['Background']:
         if ifile=='None' or ifile==[]:
             continue
@@ -214,9 +214,8 @@ def preparePandas(setupClient):
     if df_data != []:
         print ('{:<45} {:<15}'.format('Total data events  ',Fore.BLUE+str(dataPD.shape[0])))
 
-
     ################# Copy random signal truth mass to background truth mass ###################
-    truthMassVarName = 'truth_zv_mass'
+    truthMassVarName = 'DSID'
     if setupClient.runMode == 'param':
         cls_ytrain_count = Counter(sigPD_Train[truthMassVarName])
         Nclass = len(cls_ytrain_count)
@@ -281,10 +280,10 @@ def LoadData(setupClient):
 
     VariablesSet =  setupClient.InputDNNVariables[setupClient.VarSet]
     print('{:<45}{:<25}'.format("Variable set",Fore.GREEN+str(setupClient.VarSet)+' '+str(VariablesSet)) )
-    truthMassVarName = 'truth_zv_mass'
+    truthMassVarName = 'DSID'
     if setupClient.runMode == 'param':
         if truthMassVarName not in VariablesSet:
-            print ('Running on Parametrized Network and you have forgotten to add truth_zv_mass in the list of input variables for the training!')
+            print ('Running on Parametrized Network and you have forgotten to add DSID in the list of input variables for the training!')
             quit()
 
 

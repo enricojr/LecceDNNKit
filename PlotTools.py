@@ -292,16 +292,16 @@ def TestParamModelOnTestSamples(setupClient,model):
 
 
         df_data = df_data_full[VariablesSet]
-        print (df_data['truth_zv_mass'][:3])
+        print (df_data['DSID'][:3])
         print('Mass Points to Test',setupClient.massPoint)
         massPoints = eval(setupClient.massPoint)
         for mass in massPoints:
             print('Fixing truth mass to',mass)
-            df_data.loc[:,'truth_zv_mass'] = mass
-            df_data_full.loc[:,'truth_zv_mass'] = mass
+            df_data.loc[:,'DSID'] = mass
+            df_data_full.loc[:,'DSID'] = mass
             print ('Opening DATA file after adding the truth_mass')
-            print (df_data['truth_zv_mass'][:3])
-            print (df_data_full['truth_zv_mass'][:3])
+            print (df_data['DSID'][:3])
+            print (df_data_full['DSID'][:3])
 
             X = df_data.as_matrix()
             X = savedSetupClient.Scaler.transform(X)
@@ -322,8 +322,8 @@ def TestParamModelOnTestSamples(setupClient,model):
 
         ## check truth mass
         print ('Opening signal file',ifile)
-        print (df_sig['truth_zv_mass'][:3])
-        print (df_sig_full['truth_zv_mass'][:3])
+        print (df_sig['DSID'][:3])
+        print (df_sig_full['DSID'][:3])
 
         X = df_sig.as_matrix()
         X = savedSetupClient.Scaler.transform(X)
@@ -344,16 +344,16 @@ def TestParamModelOnTestSamples(setupClient,model):
         df_bkg = df_bkg_full[VariablesSet]
 
         print ('Opening background file',ifile)
-        print (df_bkg['truth_zv_mass'][:3])
+        print (df_bkg['DSID'][:3])
 
         massPoints = eval(setupClient.massPoint)
         for mass in massPoints:
             print('Fixing truth mass to',mass)
-            df_bkg.loc[:,'truth_zv_mass'] = mass
-            df_bkg_full.loc[:,'truth_zv_mass'] = mass
+            df_bkg.loc[:,'DSID'] = mass
+            df_bkg_full.loc[:,'DSID'] = mass
             print ('Opening '+ifile+' file after adding the truth_mass')
-            print (df_bkg['truth_zv_mass'][:3])
-            print (df_bkg_full['truth_zv_mass'][:3])
+            print (df_bkg['DSID'][:3])
+            print (df_bkg_full['DSID'][:3])
 
             X = df_bkg.as_matrix()
             X = savedSetupClient.Scaler.transform(X)
@@ -396,16 +396,16 @@ def TestParamModelOnFullSamples(setupClient,model):
 
 
         df_data = df_data_full[VariablesSet]
-        print (df_data['truth_zv_mass'][:3])
+        print (df_data['DSID'][:3])
         print('Mass Points to Test',setupClient.massPoint)
         massPoints = eval(setupClient.massPoint)
         for mass in massPoints:
             print('Fixing truth mass to',mass)
-            df_data.loc[:,'truth_zv_mass'] = mass
-            df_data_full.loc[:,'truth_zv_mass'] = mass
+            df_data.loc[:,'DSID'] = mass
+            df_data_full.loc[:,'DSID'] = mass
             print ('Opening DATA file after adding the truth_mass')
-            print (df_data['truth_zv_mass'][:3])
-            # print (df_data_full['truth_zv_mass'][:3])
+            print (df_data['DSID'][:3])
+            # print (df_data_full['DSID'][:3])
 
             X = df_data.as_matrix()
             X = savedSetupClient.Scaler.transform(X)
@@ -428,8 +428,8 @@ def TestParamModelOnFullSamples(setupClient,model):
 
         ## check truth mass
         print ('Opening signal file',ifile)
-        print (df_sig['truth_zv_mass'][:3])
-        print (df_sig_full['truth_zv_mass'][:3])
+        print (df_sig['DSID'][:3])
+        print (df_sig_full['DSID'][:3])
 
         X = df_sig.as_matrix()
         X = savedSetupClient.Scaler.transform(X)
@@ -451,16 +451,16 @@ def TestParamModelOnFullSamples(setupClient,model):
         df_bkg = df_bkg_full[VariablesSet]
 
         print ('Opening background file',ifile)
-        print (df_bkg['truth_zv_mass'][:3])
+        print (df_bkg['DSID'][:3])
 
         massPoints = eval(setupClient.massPoint)
         for mass in massPoints:
             print('Fixing truth mass to',mass)
-            df_bkg.loc[:,'truth_zv_mass'] = mass
-            df_bkg_full.loc[:,'truth_zv_mass'] = mass
+            df_bkg.loc[:,'DSID'] = mass
+            df_bkg_full.loc[:,'DSID'] = mass
             print ('Opening '+ifile+' file after adding the truth_mass')
-            # print (df_bkg['truth_zv_mass'][:3])
-            print (df_bkg_full['truth_zv_mass'][:3])
+            # print (df_bkg['DSID'][:3])
+            print (df_bkg_full['DSID'][:3])
 
             X = df_bkg.as_matrix()
             X = savedSetupClient.Scaler.transform(X)
